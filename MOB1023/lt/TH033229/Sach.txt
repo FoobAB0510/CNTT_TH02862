@@ -1,0 +1,6 @@
+Java, Trinh thám, 100
+C#, Tiểu thuyết, 100
+PHP, Tiểu thuyết, 120
+Angular Js, Trinh thám, 110
+HTML & CSS, Trinh thám, 90
+rfhyt, Trinh thám, 76
