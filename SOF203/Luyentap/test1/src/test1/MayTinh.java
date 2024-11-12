@@ -70,5 +70,4 @@ public class MayTinh {
     public void setGiaBan(double giaBan) {
         this.giaBan = giaBan;
     }
-    
 }

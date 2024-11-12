@@ -7,6 +7,7 @@ package test1;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,10 +20,13 @@ public class MayTinhService extends javax.swing.JFrame {
      * Creates new form MayTinhService
      */
     ArrayList<MayTinh> mt = new ArrayList<>();
+    ArrayList<String> cbo = new ArrayList<>();
 
     public MayTinhService() {
         initComponents();
         loadDefault();
+        loadCBODefault();
+        loadCBO();
         load();
     }
 
@@ -32,6 +36,14 @@ public class MayTinhService extends javax.swing.JFrame {
         mt.add(new MayTinh(3, "C", "OK", "T3", 92.000));
         mt.add(new MayTinh(4, "D", "OK", "T4", 93.000));
         mt.add(new MayTinh(5, "E", "OK", "T5", 94.000));
+    }
+    
+    void loadCBODefault() {
+        cbo.add("T1");
+        cbo.add("T2");
+        cbo.add("T3");
+        cbo.add("T4");
+        cbo.add("T5");
     }
 
     void load() {
@@ -45,6 +57,14 @@ public class MayTinhService extends javax.swing.JFrame {
                 ls.getTrangThai(),
                 ls.getGiaBan()
             });
+        }
+    }
+    
+    void loadCBO() {
+        DefaultComboBoxModel cb = (DefaultComboBoxModel) hang.getModel();
+        cb.removeAllElements();
+        for(String ls : cbo) {
+            cb.addElement(ls);
         }
     }
 
@@ -71,8 +91,6 @@ public class MayTinhService extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         ma = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        hang = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         trangthai = new javax.swing.JTextPane();
@@ -82,6 +100,7 @@ public class MayTinhService extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         ten = new javax.swing.JTextPane();
+        hang = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,8 +172,6 @@ public class MayTinhService extends javax.swing.JFrame {
 
         jLabel2.setText("Hang");
 
-        jScrollPane4.setViewportView(hang);
-
         jLabel3.setText("Trang thai");
 
         jScrollPane5.setViewportView(trangthai);
@@ -166,6 +183,13 @@ public class MayTinhService extends javax.swing.JFrame {
         jLabel5.setText("Ten");
 
         jScrollPane7.setViewportView(ten);
+
+        hang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T1", "T2", "T3", "T4", "T5" }));
+        hang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,12 +211,12 @@ public class MayTinhService extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ghi))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(291, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ac_timkiem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,21 +224,21 @@ public class MayTinhService extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel3))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(hang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
@@ -231,11 +255,11 @@ public class MayTinhService extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -260,12 +284,12 @@ public class MayTinhService extends javax.swing.JFrame {
 
     private void themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themActionPerformed
         // TODO add your handling code here:
-        mt.add(new MayTinh(Integer.parseInt(ma.getText()), ten.getText(), trangthai.getText(), hang.getText(), Double.parseDouble(giaban.getText())));
+        mt.add(new MayTinh(Integer.parseInt(ma.getText()), ten.getText(), trangthai.getText(), hang.getSelectedItem().toString(), Double.parseDouble(giaban.getText())));
     }//GEN-LAST:event_themActionPerformed
 
     private void suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaActionPerformed
         // TODO add your handling code here:
-        mt.set(tbn.getSelectedRow(), new MayTinh(Integer.parseInt(ma.getText()), ten.getText(), trangthai.getText(), hang.getText(), Double.parseDouble(giaban.getText())));
+        mt.set(tbn.getSelectedRow(), new MayTinh(Integer.parseInt(ma.getText()), ten.getText(), trangthai.getText(), hang.getSelectedItem().toString(), Double.parseDouble(giaban.getText())));
     }//GEN-LAST:event_suaActionPerformed
 
     private void xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaActionPerformed
@@ -279,7 +303,7 @@ public class MayTinhService extends javax.swing.JFrame {
             if (timkiem.getText().equals(ls.getMa())) {
                 ma.setText(String.valueOf(ls.getMa()));
                 ten.setText(ls.getTen());
-                hang.setText(ls.getHang());
+                hang.setSelectedItem(ls.getHang());
                 trangthai.setText(ls.getTrangThai());
                 giaban.setText(String.valueOf(ls.getTrangThai()));
                 break;
@@ -292,7 +316,7 @@ public class MayTinhService extends javax.swing.JFrame {
         MayTinh ls = mt.get(tbn.getSelectedRow());
         ma.setText(String.valueOf(ls.getMa()));
         ten.setText(ls.getTen());
-        hang.setText(ls.getHang());
+        hang.setSelectedItem(ls.getHang());
         trangthai.setText(ls.getTrangThai());
         giaban.setText(String.valueOf(ls.getTrangThai()));
     }//GEN-LAST:event_tbnMouseClicked
@@ -317,6 +341,11 @@ public class MayTinhService extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_ghiActionPerformed
+
+    private void hangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hangActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_hangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,7 +387,7 @@ public class MayTinhService extends javax.swing.JFrame {
     private javax.swing.JButton doc;
     private javax.swing.JButton ghi;
     private javax.swing.JTextPane giaban;
-    private javax.swing.JTextPane hang;
+    private javax.swing.JComboBox<String> hang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -367,7 +396,6 @@ public class MayTinhService extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
