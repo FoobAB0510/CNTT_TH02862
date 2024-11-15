@@ -38,5 +38,4 @@ public class chuot {
     public void setThuNghiem(boolean thuNghiem) {
         this.thuNghiem = thuNghiem;
     }
-
 }
