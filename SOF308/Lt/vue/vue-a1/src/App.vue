@@ -1,9 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import BoostrapButton from './components/BoostrapButton.vue';
-import TopMenu from './components/TopMenu.vue';
 import conditionalrendering from './components/conditionalrendering.vue';
-
+import ListRender from './components/listRender.vue';
 defineProps({
   msg: {
     type: Object,
@@ -44,6 +42,9 @@ const stfu = ref({
   <div class="app">
     <div>
       <conditionalrendering></conditionalrendering>
+    </div>
+    <div>
+      <ListRender></ListRender>
     </div>
   </div>
 </template>
