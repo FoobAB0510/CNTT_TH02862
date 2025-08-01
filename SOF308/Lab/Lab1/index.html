@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web css/html in 1 lmao</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-img {
+            width: 400px;
+            height: 400px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .category-list .list-group-item {
+            cursor: pointer;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .blog-post img {
+            width: 50%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav style="background-color: #F0F7FF;" class="py-2">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <a href="#" class="me-4">
+                    <img src="./Lab1 - Tài Nguyên/images/logo-energy-pilates.png" alt="Energy Pilates Logo" height="40">
+                </a>
+                <a href="#" class="text-dark text-decoration-none me-3" title="Bài viết">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"/>
+                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
+                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"/>
+                    </svg>
+                    <span class="ms-1">Bài viết</span>
+                </a>
+                <a href="#" class="text-dark text-decoration-none me-3" title="Video">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+                        <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z"/>
+                    </svg>
+                    <span class="ms-1">Video</span>
+                </a>
+                <a href="#" class="text-dark text-decoration-none me-3" title="Giới thiệu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                    </svg>
+                    <span class="ms-1">Giới thiệu</span>
+                </a>
+                <a href="#" class="text-dark text-decoration-none me-3" title="Sự kiện">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
+                        <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"/>
+                    </svg>
+                    <span class="ms-1">Sự kiện</span>
+                </a>
+                <a href="#" class="text-dark text-decoration-none" title="Tài khoản">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                    </svg>
+                    <span class="ms-1">Tài khoản</span>
+                </a>
+            </div>
+            <div>
+                <a href="#" class="text-dark text-decoration-none me-2">Tiếng Việt</a>
+                <a href="#" class="text-dark text-decoration-none">Tiếng Anh</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-primary">Về tôi</h4>
+                <div class="card p-3 mb-4">
+                    <img src="./Lab1 - Tài Nguyên/images/avatar.png" class="profile-img">
+                    <h6><strong>Giới thiệu bản thân</strong></h6>
+                    <p>TS. Trần Hoàng, Tổ chức Tư vấn sức khỏe quốc tế độc lập</p>
+                    <em>Châm ngôn: Ta không được chọn nơi mình sinh ra, nhưng ta được chọn cách mình sẽ sống</em>
+                </div>
+
+                <h5 class="text-primary">Chuyên mục</h5>
+                <div class="list-group category-list">
+                    <div class="list-group-item d-flex justify-content-between" style="background-color: #0DCAF0;">
+                        <span>Chế độ tập</span> <span class="badge bg-primary rounded-pill">12</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between">
+                        <span>Chế độ dinh dưỡng</span> <span class="badge bg-primary rounded-pill">15</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between">
+                        <span>Cẩm nang cuộc sống</span> <span class="badge bg-primary rounded-pill">99</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <h4 class="text-primary">Blog của tôi</h4>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered" style="background-color: #F3F3F3;">
+                        <tr>
+                            <td width="50%" style="background-color: white;">
+                                <div class="blog-post">
+                                    <h5>Phương pháp tập Pilates giúp phục hồi chấn thương cột sống <span
+                                            class="text-muted">(16)</span></h5>
+                                    <img src="./Lab1 - Tài Nguyên/images/tap-piltes.jpg" alt="Ảnh bài tập Pilates"
+                                        style="width: 100%;">
+                                    <p class="mt-2">Ngoài việc giúp duy trì vóc dáng, cải thiện sự linh hoạt, dẻo dai
+                                        cho người tập, Pilates giúp cơ bắp và các khớp mọc dài hơn, kéo giãn hơn...</p>
+                                </div>
+                            </td>
+                            <td width="50%" style="background-color: white;">
+                                <div class="list-group">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <img src="./Lab1 - Tài Nguyên/images/corevalue.jpg" alt="Ảnh minh họa"
+                                            class="me-3" width="50" height="50">
+                                        Biết ơn đời, đời sẽ thương ta <span class="ms-auto text-muted">(30)</span>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <img src="./Lab1 - Tài Nguyên/images/orange_300x300.jpg" alt="Ảnh minh họa"
+                                            class="me-3" width="50" height="50">
+                                        9 tác dụng tuyệt vời của quả cam <span class="ms-auto text-muted">(28)</span>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <img src="./Lab1 - Tài Nguyên/images/sesameoil_300x300.jpg" alt="Ảnh minh họa"
+                                            class="me-3" width="50" height="50">
+                                        10 công dụng bất ngờ từ dầu dừa <span class="ms-auto text-muted">(15)</span>
+                                    </div>
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <img src="./Lab1 - Tài Nguyên/images/spinach_300x300.jpg" alt="Ảnh minh họa"
+                                            class="me-3" width="50" height="50">
+                                        Lợi ích khi ăn rau mỗi ngày <span class="ms-auto text-muted">(12)</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center py-2">
+                                <button class="btn btn-info">Xem thêm</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy;Copyright by FPT Polytechnic
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,326 @@
+[
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "choose_speed",
+        "kind": 2,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "def choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")\n    print(\"2. Bình thường\")\n    print(\"3. Nhanh\")\n    choice = input(\"Lựa chọn (1-3): \")\n    if choice == '1': return 300\n    if choice == '3': return 100\n    return 200\nMOVE_INTERVAL = choose_speed()",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "write_score",
+        "kind": 2,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "def write_score(score):\n    with open('scores.txt', 'a') as f:\n        f.write(f\"{time.strftime('%Y-%m-%d %H:%M:%S')} - Score: {score}\\n\")\n# Khởi pygame\npygame.init()\nscreen = pygame.display.set_mode((width, height))\npygame.display.set_caption(\"Snake Game - Rắn săn mồi\")\nclock = pygame.time.Clock()\nfont = pygame.font.SysFont(None, 24)\n# Khởi snake 3 đốt giữa lưới, hướng phải",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "place_food",
+        "kind": 2,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "def place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos not in obstacles:\n            return pos\ndef place_obstacles(n=15, current_food=None):\n    obs = []\n    while len(obs) < n:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos != current_food:",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "place_obstacles",
+        "kind": 2,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "def place_obstacles(n=15, current_food=None):\n    obs = []\n    while len(obs) < n:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos != current_food:\n            obs.append(pos)\n    return obs\nfood = place_food()\nobstacles = place_obstacles(current_food=food)\n# Hàm vẽ mắt dựa theo hướng",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "draw_eyes",
+        "kind": 2,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "def draw_eyes(head_pos, direction):\n    x, y = head_pos\n    n_x, n_y = direction\n    # chuẩn hóa direction\n    length = (n_x**2 + n_y**2)**0.5 or 1\n    ux, uy = n_x/length, n_y/length\n    # vect pháp tuyến\n    px, py = -uy, ux\n    dist = snake_radius * 0.6\n    eye_pos1 = (x + ux*dist + px*dist, y + uy*dist + py*dist)",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "grid_size",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "grid_size = 20\ncell_size = 30\nwidth = height = grid_size * cell_size\n# Màu sắc\ntEAL = (0, 128, 128)\nLIME = (50, 205, 50)\nGREEN = (0, 255, 0)\nGRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "cell_size",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "cell_size = 30\nwidth = height = grid_size * cell_size\n# Màu sắc\ntEAL = (0, 128, 128)\nLIME = (50, 205, 50)\nGREEN = (0, 255, 0)\nGRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "width",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "width = height = grid_size * cell_size\n# Màu sắc\ntEAL = (0, 128, 128)\nLIME = (50, 205, 50)\nGREEN = (0, 255, 0)\nGRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "tEAL",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "tEAL = (0, 128, 128)\nLIME = (50, 205, 50)\nGREEN = (0, 255, 0)\nGRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "LIME",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "LIME = (50, 205, 50)\nGREEN = (0, 255, 0)\nGRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")\n    print(\"2. Bình thường\")",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "GREEN",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "GREEN = (0, 255, 0)\nGRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")\n    print(\"2. Bình thường\")\n    print(\"3. Nhanh\")",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "GRAY",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "GRAY = (100, 100, 100)\nBLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")\n    print(\"2. Bình thường\")\n    print(\"3. Nhanh\")\n    choice = input(\"Lựa chọn (1-3): \")",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "BLACK = (0, 0, 0)\nWHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")\n    print(\"2. Bình thường\")\n    print(\"3. Nhanh\")\n    choice = input(\"Lựa chọn (1-3): \")\n    if choice == '1': return 300",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "WHITE = (255, 255, 255)\n# FPS và tốc độ di chuyển theo ms\ndef choose_speed():\n    print(\"Chọn tốc độ rắn:\")\n    print(\"1. Chậm\")\n    print(\"2. Bình thường\")\n    print(\"3. Nhanh\")\n    choice = input(\"Lựa chọn (1-3): \")\n    if choice == '1': return 300\n    if choice == '3': return 100",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "MOVE_INTERVAL",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "MOVE_INTERVAL = choose_speed()\nFPS = 60\n# Kích thước bán kính\nsnake_radius = cell_size * 0.5\nfood_radius = snake_radius * 0.4\nobstacle_radius = snake_radius * 0.5\ndef write_score(score):\n    with open('scores.txt', 'a') as f:\n        f.write(f\"{time.strftime('%Y-%m-%d %H:%M:%S')} - Score: {score}\\n\")\n# Khởi pygame",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "FPS",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "FPS = 60\n# Kích thước bán kính\nsnake_radius = cell_size * 0.5\nfood_radius = snake_radius * 0.4\nobstacle_radius = snake_radius * 0.5\ndef write_score(score):\n    with open('scores.txt', 'a') as f:\n        f.write(f\"{time.strftime('%Y-%m-%d %H:%M:%S')} - Score: {score}\\n\")\n# Khởi pygame\npygame.init()",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "snake_radius",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "snake_radius = cell_size * 0.5\nfood_radius = snake_radius * 0.4\nobstacle_radius = snake_radius * 0.5\ndef write_score(score):\n    with open('scores.txt', 'a') as f:\n        f.write(f\"{time.strftime('%Y-%m-%d %H:%M:%S')} - Score: {score}\\n\")\n# Khởi pygame\npygame.init()\nscreen = pygame.display.set_mode((width, height))\npygame.display.set_caption(\"Snake Game - Rắn săn mồi\")",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "food_radius",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "food_radius = snake_radius * 0.4\nobstacle_radius = snake_radius * 0.5\ndef write_score(score):\n    with open('scores.txt', 'a') as f:\n        f.write(f\"{time.strftime('%Y-%m-%d %H:%M:%S')} - Score: {score}\\n\")\n# Khởi pygame\npygame.init()\nscreen = pygame.display.set_mode((width, height))\npygame.display.set_caption(\"Snake Game - Rắn săn mồi\")\nclock = pygame.time.Clock()",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "obstacle_radius",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "obstacle_radius = snake_radius * 0.5\ndef write_score(score):\n    with open('scores.txt', 'a') as f:\n        f.write(f\"{time.strftime('%Y-%m-%d %H:%M:%S')} - Score: {score}\\n\")\n# Khởi pygame\npygame.init()\nscreen = pygame.display.set_mode((width, height))\npygame.display.set_caption(\"Snake Game - Rắn săn mồi\")\nclock = pygame.time.Clock()\nfont = pygame.font.SysFont(None, 24)",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "screen = pygame.display.set_mode((width, height))\npygame.display.set_caption(\"Snake Game - Rắn săn mồi\")\nclock = pygame.time.Clock()\nfont = pygame.font.SysFont(None, 24)\n# Khởi snake 3 đốt giữa lưới, hướng phải\nsnake = [(grid_size//2 - i, grid_size//2) for i in range(3)]\ndirection = (1, 0)\nlast_move = pygame.time.get_ticks()\nscore = 0\nstart_time = pygame.time.get_ticks()",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "clock",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "clock = pygame.time.Clock()\nfont = pygame.font.SysFont(None, 24)\n# Khởi snake 3 đốt giữa lưới, hướng phải\nsnake = [(grid_size//2 - i, grid_size//2) for i in range(3)]\ndirection = (1, 0)\nlast_move = pygame.time.get_ticks()\nscore = 0\nstart_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "font",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "font = pygame.font.SysFont(None, 24)\n# Khởi snake 3 đốt giữa lưới, hướng phải\nsnake = [(grid_size//2 - i, grid_size//2) for i in range(3)]\ndirection = (1, 0)\nlast_move = pygame.time.get_ticks()\nscore = 0\nstart_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles\nobstacles = []",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "snake",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "snake = [(grid_size//2 - i, grid_size//2) for i in range(3)]\ndirection = (1, 0)\nlast_move = pygame.time.get_ticks()\nscore = 0\nstart_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles\nobstacles = []\ndef place_food():\n    while True:",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "direction",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "direction = (1, 0)\nlast_move = pygame.time.get_ticks()\nscore = 0\nstart_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles\nobstacles = []\ndef place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "last_move",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "last_move = pygame.time.get_ticks()\nscore = 0\nstart_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles\nobstacles = []\ndef place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos not in obstacles:",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "score",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "score = 0\nstart_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles\nobstacles = []\ndef place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos not in obstacles:\n            return pos",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "start_time",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "start_time = pygame.time.get_ticks()\npaused = False\n# Khởi obstacles\nobstacles = []\ndef place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos not in obstacles:\n            return pos\ndef place_obstacles(n=15, current_food=None):",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "paused",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "paused = False\n# Khởi obstacles\nobstacles = []\ndef place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos not in obstacles:\n            return pos\ndef place_obstacles(n=15, current_food=None):\n    obs = []",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "obstacles",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "obstacles = []\ndef place_food():\n    while True:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))\n        if pos not in snake and pos not in obstacles:\n            return pos\ndef place_obstacles(n=15, current_food=None):\n    obs = []\n    while len(obs) < n:\n        pos = (random.randint(0, grid_size-1), random.randint(0, grid_size-1))",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "food",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "food = place_food()\nobstacles = place_obstacles(current_food=food)\n# Hàm vẽ mắt dựa theo hướng\ndef draw_eyes(head_pos, direction):\n    x, y = head_pos\n    n_x, n_y = direction\n    # chuẩn hóa direction\n    length = (n_x**2 + n_y**2)**0.5 or 1\n    ux, uy = n_x/length, n_y/length\n    # vect pháp tuyến",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "obstacles",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "obstacles = place_obstacles(current_food=food)\n# Hàm vẽ mắt dựa theo hướng\ndef draw_eyes(head_pos, direction):\n    x, y = head_pos\n    n_x, n_y = direction\n    # chuẩn hóa direction\n    length = (n_x**2 + n_y**2)**0.5 or 1\n    ux, uy = n_x/length, n_y/length\n    # vect pháp tuyến\n    px, py = -uy, ux",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    },
+    {
+        "label": "running",
+        "kind": 5,
+        "importPath": "SOF308.Lt.abctest1.snake_game",
+        "description": "SOF308.Lt.abctest1.snake_game",
+        "peekOfCode": "running = True\nwhile running:\n    now = pygame.time.get_ticks()\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        elif event.type == pygame.KEYDOWN:\n            if event.key == pygame.K_SPACE:\n                paused = not paused\n            if not paused:",
+        "detail": "SOF308.Lt.abctest1.snake_game",
+        "documentation": {}
+    }
+]
