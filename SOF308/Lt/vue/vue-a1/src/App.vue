@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import conditionalrendering from './components/conditionalrendering.vue';
 import ListRender from './components/listRender.vue';
+import listrendering from './components/listrendering.vue'
+import eventHandle from './components/eventHandle.vue';
 defineProps({
   msg: {
     type: Object,
@@ -45,6 +47,13 @@ const stfu = ref({
     </div>
     <div>
       <ListRender></ListRender>
+    </div>
+
+    <div>
+      <listrendering></listrendering>
+    </div>
+    <div>
+      <eventHandle></eventHandle>
     </div>
   </div>
 </template>
