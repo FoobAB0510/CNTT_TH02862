@@ -1,24 +1,25 @@
 <template>
   <section class="page dashboard">
-    <h2>Dashboard</h2>
+    <h2>Bảng điều khiển</h2>
     <p>
-      Welcome to your dashboard. Here's an overview of your blog statistics:
+      Chào mừng đến với bảng điều khiển của bạn. Đây là tổng quan thống kê blog
+      của bạn:
     </p>
     <div class="stats-grid">
       <div class="stat-card">
-        <h4>Total Posts</h4>
+        <h4>Tổng bài viết</h4>
         <p class="stat-number">12</p>
       </div>
       <div class="stat-card">
-        <h4>Followers</h4>
+        <h4>Người theo dõi</h4>
         <p class="stat-number">358</p>
       </div>
       <div class="stat-card">
-        <h4>Comments</h4>
+        <h4>Bình luận</h4>
         <p class="stat-number">1,243</p>
       </div>
       <div class="stat-card">
-        <h4>Views</h4>
+        <h4>Lượt xem</h4>
         <p class="stat-number">28,531</p>
       </div>
     </div>
@@ -27,7 +28,7 @@
 
 <script>
 export default {
-  name: "DashboardPage",
+  name: "TrangBangDieuKhien",
 };
 </script>
 

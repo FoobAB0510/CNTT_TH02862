@@ -391,43 +391,6 @@ class DataService {
       return null
     }
   }
-
-  async deleteComment(postId: string, commentId: number): Promise<boolean> {
-    try {
-      const post = this.getPostById(postId)
-      if (!post) return false
-
-      const commentIndex = post.comments.findIndex(comment => comment.id === commentId)
-      if (commentIndex === -1) return false
-
-      const updatedComments = post.comments.filter(c => c.id !== commentId)
-      const updatedPost = {
-        ...post,
-        comments: updatedComments
-      }
-
-      const response = await fetch(`${this.API_URL}/posts/${postId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedPost)
-      })
-
-      if (response.ok) {
-        const result = await response.json()
-        const postIndex = this.posts.findIndex(p => p.id === postId)
-        if (postIndex !== -1) {
-          this.posts[postIndex] = result
-        }
-        console.log('✅ Comment deleted from json-server')
-        return true
-      } else {
-        throw new Error('Failed to delete comment')
-      }
-    } catch (error) {
-      console.error('❌ Error deleting comment:', error)
-      return false
-    }
-  }
 }
 
 export const dataService = new DataService()

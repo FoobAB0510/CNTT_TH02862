@@ -1,6 +1,6 @@
 <template>
   <section class="page blog-list">
-    <h2 class="section-title">Blog Posts</h2>
+    <h2 class="section-title">Bài viết Blog</h2>
     <div class="posts-grid">
       <div v-for="post in posts" :key="post.id" class="post-card">
         <h3 class="post-title">
@@ -9,7 +9,7 @@
           </router-link>
         </h3>
         <div class="meta">
-          <span>By {{ post.author }}</span>
+          <span>Bởi {{ post.author }}</span>
           <span> • {{ post.date }}</span>
         </div>
         <p class="excerpt">{{ post.excerpt }}</p>
@@ -17,7 +17,7 @@
           :to="{ name: 'BlogPost', params: { id: post.id } }"
           class="read-more"
         >
-          Read more →
+          Đọc thêm →
         </router-link>
       </div>
     </div>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "BlogListPage",
+  name: "TrangDanhSachBlog",
   data() {
     return {
       posts: [

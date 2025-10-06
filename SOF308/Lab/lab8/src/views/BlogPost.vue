@@ -5,21 +5,23 @@
         <div class="header">
           <h1 class="title">{{ post.title }}</h1>
           <div class="meta">
-            <span>By {{ post.author }}</span>
+            <span>Bởi {{ post.author }}</span>
             <span>• {{ post.date }}</span>
           </div>
         </div>
         <div class="content" v-html="post.contentHtml"></div>
         <div class="back">
           <router-link :to="{ name: 'BlogList' }"
-            >← Back to all posts</router-link
+            >← Quay lại tất cả bài viết</router-link
           >
         </div>
       </div>
       <div v-else class="not-found">
-        <h2>Post not found</h2>
-        <p>Could not find post with ID: {{ $route.params.id }}</p>
-        <router-link :to="{ name: 'BlogList' }">Back to blog list</router-link>
+        <h2>Không tìm thấy bài viết</h2>
+        <p>Không thể tìm thấy bài viết với ID: {{ $route.params.id }}</p>
+        <router-link :to="{ name: 'BlogList' }"
+          >Quay lại danh sách blog</router-link
+        >
       </div>
     </div>
   </section>
@@ -27,7 +29,7 @@
 
 <script>
 export default {
-  name: "BlogPostPage",
+  name: "TrangBaiVietBlog",
   data() {
     return {
       posts: [

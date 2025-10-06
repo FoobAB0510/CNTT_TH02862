@@ -50,17 +50,6 @@ const addComment = async () => {
   }
 }
 
-const deleteComment = async (commentId: number) => {
-  if (confirm('Bạn có chắc chắn muốn xóa bình luận này?')) {
-    try {
-      await dataService.deleteComment(postId.value, commentId)
-      loadPost()
-    } catch (error) {
-      alert('Có lỗi xảy ra khi xóa bình luận')
-    }
-  }
-}
-
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString('vi-VN', {
     year: 'numeric',
@@ -164,16 +153,6 @@ onMounted(() => {
                   <strong class="text-primary">{{ comment.authorName }}</strong>
                   <span class="text-muted ms-2">{{ formatDate(comment.createdAt) }}</span>
                 </div>
-
-                <!-- Delete comment button (only for comment author or post author) -->
-                <button
-                  v-if="user && (comment.authorName === user.username || post.authorId === user.id)"
-                  class="btn btn-sm btn-outline-danger"
-                  @click="deleteComment(comment.id)"
-                  title="Xóa bình luận"
-                >
-                  <i class="bi bi-trash"></i>
-                </button>
               </div>
 
               <p class="comment-content mb-0">{{ comment.content }}</p>

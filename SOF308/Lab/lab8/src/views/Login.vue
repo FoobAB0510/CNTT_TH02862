@@ -2,8 +2,8 @@
   <div class="login-wrapper">
     <div class="form-card">
       <div class="header">
-        <h2 class="title">Welcome Back</h2>
-        <p class="subtitle">Sign in to your account to continue</p>
+        <h2 class="title">Chào Mừng Trở Lại</h2>
+        <p class="subtitle">Đăng nhập vào tài khoản của bạn để tiếp tục</p>
       </div>
 
       <div v-if="!loggedIn" class="body">
@@ -17,8 +17,10 @@
               autocomplete="username"
               :class="{ invalid: usernameError }"
             />
-            <label for="username">Username</label>
-            <div v-if="usernameError" class="field-error">{{ usernameError }}</div>
+            <label for="username">Tên đăng nhập</label>
+            <div v-if="usernameError" class="field-error">
+              {{ usernameError }}
+            </div>
           </div>
 
           <div class="input-group" :class="{ filled: email }">
@@ -30,12 +32,12 @@
               autocomplete="email"
               :class="{ invalid: emailError }"
             />
-            <label for="email">Email address</label>
+            <label for="email">Địa chỉ email</label>
             <div v-if="emailError" class="field-error">{{ emailError }}</div>
           </div>
 
           <button type="submit" class="btn-primary" :disabled="submitting">
-            <span v-if="!submitting">Login</span>
+            <span v-if="!submitting">Đăng nhập</span>
             <span v-else class="loader"></span>
           </button>
         </form>
@@ -43,11 +45,15 @@
 
       <div v-else class="body">
         <div class="logged-in">
-          <p class="success">✅ Logged in as <strong>{{ user.username }}</strong></p>
+          <p class="success">
+            ✅ Đã đăng nhập với tên <strong>{{ user.username }}</strong>
+          </p>
           <p class="muted">{{ user.email }}</p>
           <div class="actions">
-            <router-link :to="{ name: 'Dashboard' }" class="btn-secondary">Dashboard</router-link>
-            <button @click="logout" class="btn-outline">Logout</button>
+            <router-link :to="{ name: 'Dashboard' }" class="btn-secondary"
+              >Bảng điều khiển</router-link
+            >
+            <button @click="logout" class="btn-outline">Đăng xuất</button>
           </div>
         </div>
       </div>
@@ -81,14 +87,14 @@ export default {
       this.emailError = "";
       let ok = true;
       if (!this.username) {
-        this.usernameError = "Username is required.";
+        this.usernameError = "Tên đăng nhập là bắt buộc.";
         ok = false;
       }
       if (!this.email) {
-        this.emailError = "Email is required.";
+        this.emailError = "Email là bắt buộc.";
         ok = false;
       } else if (!/^\S+@\S+\.\S+$/.test(this.email)) {
-        this.emailError = "Email is invalid.";
+        this.emailError = "Email không hợp lệ.";
         ok = false;
       }
       return ok;
@@ -122,7 +128,9 @@ export default {
 </script>
 
 <style scoped>
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -139,7 +147,7 @@ export default {
   box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
   width: 100%;
 }
 .form-card:hover {
@@ -173,11 +181,11 @@ export default {
   font-size: 1rem;
   background: #f7f9fc;
   outline: none;
-  transition: border .2s, box-shadow .2s;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 .input-group input:focus {
   border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 .input-group label {
   position: absolute;
@@ -189,7 +197,7 @@ export default {
   color: #7a8ca3;
   font-size: 0.85rem;
   pointer-events: none;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 .input-group.filled label,
 .input-group input:focus + label {
@@ -205,7 +213,7 @@ export default {
 .btn-primary {
   width: 100%;
   padding: 0.85rem;
-  background: linear-gradient(135deg,#6366f1,#a78bfa);
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
   border: none;
   color: white;
   font-weight: 600;
@@ -225,12 +233,14 @@ export default {
   width: 18px;
   height: 18px;
   border: 3px solid white;
-  border-top-color: rgba(255,255,255,0.4);
+  border-top-color: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  animation: spin .8s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .logged-in {
   text-align: center;
@@ -268,7 +278,7 @@ export default {
   color: #6366f1;
 }
 .btn-outline:hover {
-  background: rgba(99,102,241,0.1);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 /* responsive tweak */

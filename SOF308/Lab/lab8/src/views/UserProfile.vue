@@ -1,10 +1,12 @@
 <template>
   <section class="page user-profile">
-    <h2>👤 User Profile</h2>
+    <h2>👤 Hồ Sơ Người Dùng</h2>
 
     <div v-if="!isLoggedIn" class="profile-section">
-      <p>⚠️ No user information found. Please login first.</p>
-      <router-link :to="{ name: 'LoginPage' }" class="btn-link">Go to Login</router-link>
+      <p>⚠️ Không tìm thấy thông tin người dùng. Vui lòng đăng nhập trước.</p>
+      <router-link :to="{ name: 'LoginPage' }" class="btn-link"
+        >Đi đến Đăng nhập</router-link
+      >
     </div>
 
     <div v-else>
@@ -14,14 +16,14 @@
           class="tab"
           active-class="active"
         >
-          🔍 Info
+          🔍 Thông tin
         </router-link>
         <router-link
           :to="{ name: 'UserProfileSettings' }"
           class="tab"
           active-class="active"
         >
-          ⚙️ Settings
+          ⚙️ Cài đặt
         </router-link>
       </div>
       <div class="tab-content">
@@ -66,12 +68,12 @@ export default {
   text-decoration: none;
   color: #2c3e50;
   font-weight: 600;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 .tab.active {
-  background: linear-gradient(135deg,#6366f1,#a78bfa);
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
   color: white;
-  box-shadow: 0 10px 25px -5px rgba(99,102,241,0.4);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
 }
 .tab-content {
   margin-top: 0.5rem;

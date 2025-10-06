@@ -2,14 +2,16 @@
   <div class="settings-wrapper">
     <div class="settings-card">
       <div class="header">
-        <h3 class="title">Update Profile</h3>
-        <p class="subtitle">Change your username or email below.</p>
+        <h3 class="title">Cập Nhật Hồ Sơ</h3>
+        <p class="subtitle">
+          Thay đổi tên đăng nhập hoặc email của bạn bên dưới.
+        </p>
       </div>
       <div v-if="user">
         <form @submit.prevent="save" novalidate>
           <div class="input-group" :class="{ filled: form.username }">
             <input id="username" v-model.trim="form.username" required />
-            <label for="username">Username</label>
+            <label for="username">Tên đăng nhập</label>
           </div>
           <div class="input-group" :class="{ filled: form.email }">
             <input id="email" v-model.trim="form.email" required type="email" />
@@ -17,7 +19,7 @@
           </div>
           <div class="actions">
             <button type="submit" class="btn-save" :disabled="saving">
-              <span v-if="!saving">Save changes</span>
+              <span v-if="!saving">Lưu thay đổi</span>
               <span v-else class="loader-small"></span>
             </button>
             <div v-if="message" class="feedback">{{ message }}</div>
@@ -25,7 +27,7 @@
         </form>
       </div>
       <div v-else class="empty">
-        <p>Please log in to edit your profile.</p>
+        <p>Vui lòng đăng nhập để chỉnh sửa hồ sơ của bạn.</p>
       </div>
     </div>
   </div>
@@ -81,7 +83,7 @@ export default {
   background: white;
   border-radius: 12px;
   padding: 1.75rem 2rem;
-  box-shadow: 0 25px 50px -10px rgba(0,0,0,0.08);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.08);
   position: relative;
 }
 .header {
@@ -110,11 +112,11 @@ export default {
   font-size: 1rem;
   background: #f7f9fc;
   outline: none;
-  transition: border .2s, box-shadow .2s;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 .input-group input:focus {
   border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52,152,219,0.15);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 .input-group label {
   position: absolute;
@@ -126,7 +128,7 @@ export default {
   font-size: 0.75rem;
   color: #7a8ca3;
   pointer-events: none;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 .input-group.filled label,
 .input-group input:focus + label {
@@ -142,7 +144,7 @@ export default {
   margin-top: 0.5rem;
 }
 .btn-save {
-  background: linear-gradient(135deg,#3498db,#6366f1);
+  background: linear-gradient(135deg, #3498db, #6366f1);
   border: none;
   padding: 0.85rem 1.5rem;
   color: white;
@@ -164,12 +166,14 @@ export default {
   width: 16px;
   height: 16px;
   border: 2px solid white;
-  border-top-color: rgba(255,255,255,0.4);
+  border-top-color: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  animation: spin .8s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .empty {
   padding: 1rem;
